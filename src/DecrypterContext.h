@@ -217,6 +217,7 @@ namespace HonokaMiku
 	protected:
 		inline EN3_Dctx() {}
 		const uint32_t* _getKeyTables();
+		const uint32_t* _getLngKeyTables();
 	public:
 		/// \brief Initialize SIF EN decrypter context (version 3)
 		/// \param header The first 4-bytes contents of the file
