@@ -155,7 +155,7 @@ void HonokaMiku::setupEncryptV3(HonokaMiku::V3_Dctx* dctx, const char* prefix, u
 	}
 	else if(fv == 4 && lcg_ktbl != NULL)
 	{
-		hdr_create[4] = 0x2C;
+		hdr_create[4] = 0x22;
 		hdr_create[7] = 2;
 
 		dctx->init_key = (mctx.digestRaw[8] << 24) |
