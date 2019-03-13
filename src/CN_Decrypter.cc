@@ -24,6 +24,12 @@ static const uint32_t cn_key_tables[64] = {
 	0xcd84d15bu, 0xa0290f82u, 0xd3e95afcu, 0x9c6a97b4u
 };
 
+static const uint32_t cn_lng_key_tables[12] = {
+	0x41C64E6DU, 0x00003039U, 0x0000000FU, 0x015A4E35U, 
+	0x00000001U, 0x00000017U, 0x000343FDU, 0x00269EC3U, 
+	0x00000018U, 0x00010101U, 0x00415927U, 0x00000008U, 
+};
+
 ////////////////////
 // Version 2 code //
 ////////////////////
@@ -42,10 +48,11 @@ uint32_t HonokaMiku::CN2_Dctx::get_id()
 HonokaMiku::CN3_Dctx::CN3_Dctx(const void* header, const char* filename): V3_Dctx(GetPrefixFromGameType(HONOKAMIKU_GAMETYPE_CN), header, filename) {}
 
 const uint32_t* HonokaMiku::CN3_Dctx::_getKeyTables() { return cn_key_tables; }
+const uint32_t* HonokaMiku::CN3_Dctx::_getLngKeyTables() { return cn_lng_key_tables; }
 
 uint32_t HonokaMiku::CN3_Dctx::get_id()
 {
-	return HONOKAMIKU_GAMETYPE_CN | HONOKAMIKU_DECRYPT_V3;
+	return HONOKAMIKU_GAMETYPE_CN | (version << 16);
 }
 
 void HonokaMiku::CN3_Dctx::final_setup(const char* filename, const void* block_rest, int32_t force_version)
